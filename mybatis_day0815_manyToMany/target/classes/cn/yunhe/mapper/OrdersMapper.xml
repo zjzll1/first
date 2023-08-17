@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yunhe.mapper.OrdersMapper">
+    <resultMap id="ordersMap" type="orders">
+        <id property="id" column="id"></id>
+        <result property="uid" column="uid"></result>
+        <result property="ordertime" column="ordertime"></result>
+        <result property="money" column="money"></result>
+
+        <!--
+             来描述1对1关系
+                association:给1的一方做映射
+                property:表示 Java类中一的一方的属性名称
+                javaType:该属性的java的类型
+        -->
+        <association property="user" javaType="cn.yunhe.entity.User">
+            <id property="id" column="uid"></id>
+            <result property="username" column="username"></result>
+            <result property="birthday" column="birthday"></result>
+            <result property="sex" column="sex"></result>
+            <result property="address" column="address"></result>
+        </association>
+    </resultMap>
+
+    <select id="findOrder" resultMap="ordersMap">
+        select * from orders o, user u where o.uid = u.id and o.id = #{id}
+    </select>
+</mapper>

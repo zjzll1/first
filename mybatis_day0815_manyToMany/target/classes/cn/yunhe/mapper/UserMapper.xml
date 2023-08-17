@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yunhe.mapper.UserMapper">
+
+    <resultMap id="userMap" type="user" autoMapping="true">
+        <id property="id" column="id"></id>
+
+        <collection property="roleList" ofType="role" autoMapping="true">
+            <id column="rid" property="id"></id>
+            <result property="roleName" column="role_name"></result>
+            <result property="roleDesc" column="role_desc"></result>
+        </collection>
+
+    </resultMap>
+
+    <select id="findUserRole" resultMap="userMap">
+        select * from user u, role r,user_role ur where r.id=ur.rid and u.id=ur.uid and u.id=#{id}
+    </select>
+
+</mapper>

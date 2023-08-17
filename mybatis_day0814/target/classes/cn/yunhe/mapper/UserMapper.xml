@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.yunhe.mapper.UserMapper">
+    <!--
+         resultType:返回值类型
+    -->
+    <select id="findAll" resultType="user">
+        select * from user
+    </select>
+
+    <insert id="addUser" parameterType="user">
+        insert into user (username,birthday,sex,address) values (#{username},#{birthday},#{sex},#{address})
+    </insert>
+
+    <update id="updateUser" parameterType="user">
+        update user set username =#{username},birthday=#{birthday},sex=#{sex},address=#{address} where id =#{id}
+    </update>
+
+    <delete id="deleteUserById" parameterType="int">
+        delete from user where id = #{id}
+    </delete>
+
+    <select id="findByNameAndSex" resultType="user">
+        select * from user where username=#{username} and sex=#{sex}
+    </select>
+
+    <select id="findBySelectMap" resultType="user">
+        select * from user where username=#{username} and sex=#{sex}
+    </select>
+
+    <select id="findBySelectPOJO" resultType="user" parameterType="user">
+        select * from user where username=#{username} and sex=#{sex}
+    </select>
+
+    <select id="findBySelectPOJO1" resultType="user" parameterType="QueryVo">
+        select * from user where username=#{user.username} and sex=#{user.sex}
+    </select>
+
+    <!--
+    useGeneratedKeys:使用自增主键
+      keyProperty:实体类中id
+      keyColumn:数据库中的id
+    -->
+    <insert id="addUser1" parameterType="user" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
+        insert into user (username,birthday,sex,address) values (#{username},#{birthday},#{sex},#{address})
+    </insert>
+
+
+    <select id="findByLikeSelect" resultType="user" parameterType="user">
+        select * from user
+        <where>
+            <if test="username!=null">
+                and username like '%'  #{username}  '%'
+            </if>
+            <if test="sex!=null">
+                and sex = #{sex}
+            </if>
+        </where>
+    </select>
+
+    <update id="editUser" parameterType="user">
+        update user
+        <set>
+            <if test="username!=null">
+                username = #{username},
+            </if>
+            <if test="birthday!=null">
+                birthday = #{birthday},
+            </if>
+            <if test="sex!=null">
+                sex = #{sex},
+            </if>
+            <if test="address!=null">
+                address = #{address},
+            </if>
+        </set>
+        where id =#{id}
+    </update>
+
+    <!--
+    delete from user where id in(10,11,12)
+     collection:遍历的内容类型  如果是集合 list 如果数组 array
+     open:开始的拼接
+     close:结束的拼接
+     item:遍历过程中每一个元素
+     separator:每个循环元素后的分割符合
+    -->
+    <delete id="deleteAll">
+        delete from user where id in
+        <foreach collection="list" open="(" close=")" item="id" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <delete id="deleteAllArray">
+        delete from user where id in
+        <foreach collection="array" open="(" close=")" item="id" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

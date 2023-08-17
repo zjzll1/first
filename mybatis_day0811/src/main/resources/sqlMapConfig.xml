@@ -1,0 +1,92 @@
+<!--
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <properties resource="db.properties"></properties>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="jdbc"></transactionManager>
+            <dataSource type="pooled">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql:///mybatis_day01"/>
+                <property name="username" value="root"/>
+                <property name="password" value="0923"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <environment id="mysql_01">
+        <transactionManager type="jdbc"></transactionManager>
+        <dataSource type="cn.yunhe.pool.MyPooled">
+            &lt;!&ndash;使用mybatis内置连接池 driver这个key是固定写法&ndash;&gt;
+            <property name="driverClassName" value="${jdbc.driverClassName}"/>
+            <property name="url" value="${jdbc.url}"/>
+            <property name="username" value="${jdbc.username}"/>
+            <property name="password" value="${jdbc.password}"/>
+        </dataSource>
+    </environment>
+
+    <mappers>
+        <mapper resource="userMapper.xml"></mapper>
+    </mappers>
+
+</configuration>-->
+
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--
+        指定要加载的文件名称
+    -->
+    <properties resource="db.properties"></properties>
+    <!--
+        数据库的环境配置
+           default:要使用哪一段配置
+    -->
+    <environments default="mysql">
+        <environment id="mysql_01">
+            <transactionManager type="jdbc"></transactionManager>
+            <dataSource type="cn.yunhe.pool.MyPooled">
+                <!--使用mybatis内置连接池 driver这个key是固定写法-->
+                <property name="driverClassName" value="${jdbc.driverClassName}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+
+
+        <environment id="mysql">
+            <!--
+            type
+               jdbc:使用jdbc管理事务的提交方式
+               manager:什么也不做,将来mybatis与spring进行集成的时候,事务管理交给spring来做
+            -->
+            <transactionManager type="jdbc"></transactionManager>
+            <!--
+                连接池的配置
+                  type
+                    pooled:使用mybatis内置的连接池来管理连接
+                    unpooled:不使用连接池，每次操作数据库都需要新建一个连接,使用完毕后都会销毁这个连接
+            -->
+            <dataSource type="pooled">
+                <!--使用mybatis内置连接池 driver这个key是固定写法-->
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql:///mybatis_day01"/>
+                <property name="username" value="root"/>
+                <property name="password" value="0923"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="cn/yunhe/mapper/UserMapper.xml"></mapper>
+        <mapper resource="cn/yunhe/mapper/AccountMapper.xml"></mapper>
+    </mappers>
+</configuration>
