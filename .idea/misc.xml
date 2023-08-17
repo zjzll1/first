@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/education" />
+    <file type="web" url="file://$PROJECT_DIR$/login/login_web" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/login/pom.xml" />
+        <option value="$PROJECT_DIR$/education/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis_day0811/pom.xml" />
+        <option value="$PROJECT_DIR$/myvatis_day0814/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis_day0814/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis_day0815/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis_day0815_oneToOne/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis_day0815_oneToMany/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis_day0815_manyToMany/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatis_day0816/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8 (2)" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

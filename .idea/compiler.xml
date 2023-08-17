@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mybatis_day0814" />
+        <module name="login_entity" />
+        <module name="mybatis_day0815_oneToMany" />
+        <module name="mybatis_day0815_manyToMany" />
+        <module name="login_utils" />
+        <module name="education" />
+        <module name="mybatis_day0811" />
+        <module name="login_service" />
+        <module name="login_web" />
+        <module name="login_dao" />
+        <module name="mybatis_day0816" />
+        <module name="mybatis_day0815_oneToOne" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="day0814" target="1.8" />
+      <module name="HomeWork0814" target="1.8" />
+      <module name="mybatis_day0814 (1)" target="1.8" />
+      <module name="mybatis_day0814 (2)" target="1.8" />
+      <module name="mybatis_day0815" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
